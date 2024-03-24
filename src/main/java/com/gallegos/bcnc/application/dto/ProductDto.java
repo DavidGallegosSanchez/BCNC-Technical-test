@@ -17,8 +17,6 @@ public class ProductDto {
 
     private int brandId;
 
-    private int priority;
-
     private LocalDateTime startDate;
 
     private LocalDateTime endDate;

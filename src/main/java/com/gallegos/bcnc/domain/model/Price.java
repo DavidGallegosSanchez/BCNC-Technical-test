@@ -1,20 +1,29 @@
 package com.gallegos.bcnc.domain.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PRICE")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Price {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id_Price")
-    private Long id;
+    private int id;
 
     @Column(name = "Brand_Id")
-    private Long brandId;
+    private int brandId;
+
     @Column(name = "Start_Date")
     private LocalDateTime startDate;
 
@@ -22,13 +31,13 @@ public class Price {
     private LocalDateTime endDate;
 
     @Column(name = "Price_List")
-    private Long priceList;
+    private int priceList;
 
     @Column(name = "Product_Id")
-    private Long productId;
+    private int productId;
 
     @Column(name = "Priority")
-    private Long priority;
+    private int priority;
 
     @Column(name = "Price")
     private float price;

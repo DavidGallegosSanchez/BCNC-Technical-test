@@ -56,6 +56,10 @@ Resultados correctos en los test.
 
 ## Getting Started
 
+### Notes
+I implemeted two methods to do the same, one of them as GET to send the conditions by url and the other one as a POST to send the condition as a @RequestBody.
+Please, see the email to the recuitment because I added images about the coverage, test and hexagonal Architecture project diagram.
+
 ### Dependencies
 
 * h2database - H2 is a relational database management system programmed in Java. It can be embedded in Java applications or run in client-server mode.

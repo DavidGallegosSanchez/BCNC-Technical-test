@@ -1,11 +1,14 @@
 package com.gallegos.bcnc.application;
 
 import com.gallegos.bcnc.application.dto.ProductDto;
+import com.gallegos.bcnc.application.request.ProductRequest;
+import com.gallegos.bcnc.application.response.ProductResponse;
 import com.gallegos.bcnc.application.mapper.Mapper;
 import com.gallegos.bcnc.domain.service.IProduct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,7 @@ public class ProductController {
     private static final Logger logger = LogManager.getLogger(ProductController.class);
     static final String URL = "/api";
     static final String GET_PRODUCTS_BY_CONDITIONS = "/get_product_by_condionts";
+    static final String GET_PRODUCTS_BY_CONDITIONS_RESPONSE = "/get_product_by_condionts_response";
 
     @Autowired
     private IProduct productService;
@@ -40,5 +44,16 @@ public class ProductController {
                 " - star date: " + out.getStartDate() +
                 " - end date: " + out.getEndDate() +
                 " - price: " + out.getPrice());
+    }
+
+    @PostMapping(value = ProductController.GET_PRODUCTS_BY_CONDITIONS_RESPONSE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ProductResponse getProductByConditionsResponse(@RequestBody final ProductRequest productRequest) {
+        logger.info("Getting the product.");
+        long startTime = System.nanoTime();
+        ProductResponse out = mapper.toResponse(productService.getProductByConditionsPostMethod(productRequest));
+        long endTime = System.nanoTime();
+        logger.info("Product calculated in {} seconds.", (double)(endTime - startTime)/1000000000 );
+
+        return out;
     }
 }

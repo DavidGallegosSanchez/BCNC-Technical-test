@@ -1,4 +1,4 @@
-package com.gallegos.bcnc.application.dto;
+package com.gallegos.bcnc.application.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +9,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductDto {
+public class ProductResponse {
+
     private int productId;
 
     private int brandId;

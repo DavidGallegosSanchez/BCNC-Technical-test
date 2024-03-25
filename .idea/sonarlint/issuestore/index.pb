@@ -21,3 +21,11 @@ r
 Bsrc/main/java/com/gallegos/bcnc/application/ProductController.java,0\0\0038853c990452150ff37c4dfa8c5ce03ab4b212
 g
 7src/main/java/com/gallegos/bcnc/BcncAppApplication.java,2\c\2c1a6d7fd3f054f0531da9a8c2902922b98b57cd
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+t
+Dsrc/main/java/com/gallegos/bcnc/application/response/ProductDto.java,d\a\daed8c2a6c0249424fc1780d92bb61f5c18688d6
+y
+Isrc/main/java/com/gallegos/bcnc/application/response/ProductResponse.java,e\d\ed66800d8f4a6dfba46dd1b27743541bc57d0914
+w
+Gsrc/main/java/com/gallegos/bcnc/application/request/ProductRequest.java,2\1\219fb5ac674d204fa14b44e6148a16b71d971892

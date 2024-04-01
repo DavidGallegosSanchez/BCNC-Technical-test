@@ -10,8 +10,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 public class ProductRequest {
+
     private LocalDateTime applicationDate;
     private int productIdentifier;
-
     private int brandIdentifier;
+
 }

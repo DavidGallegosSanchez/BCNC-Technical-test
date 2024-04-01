@@ -31,7 +31,7 @@ class ProductControllerTest {
         int status = mvcResult.getResponse().getStatus();
         Assertions.assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        Assertions.assertTrue(content.contains("price list: 1"));
+        Assertions.assertTrue(content.contains("\"price list\":1"));
     }
 
     @Test

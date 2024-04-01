@@ -1,18 +1,16 @@
 package com.gallegos.bcnc.application;
 
-import com.gallegos.bcnc.application.dto.ProductDto;
 import com.gallegos.bcnc.application.request.ProductRequest;
 import com.gallegos.bcnc.application.response.ProductResponse;
-import com.gallegos.bcnc.application.mapper.Mapper;
 import com.gallegos.bcnc.domain.service.IProduct;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @RestController
 @RequestMapping(ProductController.URL)
@@ -26,31 +24,23 @@ public class ProductController {
     @Autowired
     private IProduct productService;
 
-    @Autowired
-    private Mapper mapper;
-
     @GetMapping(ProductController.GET_PRODUCTS_BY_CONDITIONS)
-    public ResponseEntity<String> getProductByConditions(@RequestParam LocalDateTime applicationDate,
-                                            @RequestParam int productIdentifier, @RequestParam int brandIdentifier) {
+    public Map<String, Object> getProductByConditions(@RequestParam LocalDateTime applicationDate, @RequestParam int productIdentifier, @RequestParam int brandIdentifier) {
+
         logger.info("Getting the product.");
         long startTime = System.nanoTime();
-        ProductDto out = mapper.toDto(productService.getProductByConditions(applicationDate, productIdentifier, brandIdentifier));
+        Map<String, Object> body = productService.getProductByConditions(applicationDate, productIdentifier, brandIdentifier);
         long endTime = System.nanoTime();
         logger.info("Product calculated in {} seconds.", (double)(endTime - startTime)/1000000000 );
 
-        return ResponseEntity.ok().body("Product: " + out.getProductId() +
-                " - brand identifier: " + out.getBrandId() +
-                " - price list: " + out.getPriceList() +
-                " - star date: " + out.getStartDate() +
-                " - end date: " + out.getEndDate() +
-                " - price: " + out.getPrice());
+        return body;
     }
 
     @PostMapping(value = ProductController.GET_PRODUCTS_BY_CONDITIONS_RESPONSE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ProductResponse getProductByConditionsResponse(@RequestBody final ProductRequest productRequest) {
         logger.info("Getting the product.");
         long startTime = System.nanoTime();
-        ProductResponse out = mapper.toResponse(productService.getProductByConditionsPostMethod(productRequest));
+        ProductResponse out = productService.getProductByConditionsPostMethod(productRequest);
         long endTime = System.nanoTime();
         logger.info("Product calculated in {} seconds.", (double)(endTime - startTime)/1000000000 );
 

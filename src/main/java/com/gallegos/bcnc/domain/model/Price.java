@@ -40,7 +40,7 @@ public class Price {
     private int priority;
 
     @Column(name = "Price")
-    private float price;
+    private float priceField;
 
     @Column(name = "Curr")
     private String curr;

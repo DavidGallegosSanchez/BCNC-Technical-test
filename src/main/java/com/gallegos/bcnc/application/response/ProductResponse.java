@@ -12,14 +12,10 @@ import java.time.LocalDateTime;
 public class ProductResponse {
 
     private int productId;
-
     private int brandId;
-
     private LocalDateTime startDate;
-
     private LocalDateTime endDate;
-
     private float price;
-
     private int priceList;
+
 }

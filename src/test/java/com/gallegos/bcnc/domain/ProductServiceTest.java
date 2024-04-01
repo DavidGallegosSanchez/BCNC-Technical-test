@@ -1,6 +1,5 @@
 package com.gallegos.bcnc.domain;
 
-import com.gallegos.bcnc.domain.model.Price;
 import com.gallegos.bcnc.domain.service.ProductServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @SpringBootTest
 class ProductServiceTest {
@@ -21,11 +21,11 @@ class ProductServiceTest {
         // Given
 
         // When
-        Price price = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T10:00:00.000"), 35455, 1);
+        Map<String, Object> out = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T10:00:00.000"), 35455, 1);
 
         // Then
-        Assertions.assertNotNull(price, "Price should be not null.");
-        Assertions.assertEquals(1, price.getPriceList(), "The value of price list should be 1.");
+        Assertions.assertNotNull(out, "Price should be not null.");
+        Assertions.assertEquals(1, out.get("price list"), "The value of price list should be 1.");
 
     }
 
@@ -35,11 +35,11 @@ class ProductServiceTest {
         // Given
 
         // When
-        Price price = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T16:00:00.000"), 35455, 1);
+        Map<String, Object> out = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T16:00:00.000"), 35455, 1);
 
         // Then
-        Assertions.assertNotNull(price, "Price should be not null.");
-        Assertions.assertEquals(2, price.getPriceList(), "The value of price list should be 2.");
+        Assertions.assertNotNull(out, "Price should be not null.");
+        Assertions.assertEquals(2, out.get("price list"), "The value of price list should be 2.");
 
     }
     @Test
@@ -48,11 +48,11 @@ class ProductServiceTest {
         // Given
 
         // When
-        Price price = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T21:00:00.000"), 35455, 1);
+        Map<String, Object> out = productService.getProductByConditions(LocalDateTime.parse("2020-06-14T21:00:00.000"), 35455, 1);
 
         // Then
-        Assertions.assertNotNull(price, "Price should be not null.");
-        Assertions.assertEquals(1, price.getPriceList(), "The value of price list should be 2.");
+        Assertions.assertNotNull(out, "Price should be not null.");
+        Assertions.assertEquals(1, out.get("price list"), "The value of price list should be 2.");
 
     }
     @Test
@@ -61,11 +61,11 @@ class ProductServiceTest {
         // Given
 
         // When
-        Price price = productService.getProductByConditions(LocalDateTime.parse("2020-06-15T10:00:00.000"), 35455, 1);
+        Map<String, Object> out = productService.getProductByConditions(LocalDateTime.parse("2020-06-15T10:00:00.000"), 35455, 1);
 
         // Then
-        Assertions.assertNotNull(price, "Price should be not null.");
-        Assertions.assertEquals(3, price.getPriceList(), "The value of price list should be 3.");
+        Assertions.assertNotNull(out, "Price should be not null.");
+        Assertions.assertEquals(3, out.get("price list"), "The value of price list should be 3.");
 
     }
 
@@ -75,11 +75,11 @@ class ProductServiceTest {
         // Given
 
         // When
-        Price price = productService.getProductByConditions(LocalDateTime.parse("2020-06-16T21:00:00.000"), 35455, 1);
+        Map<String, Object> out = productService.getProductByConditions(LocalDateTime.parse("2020-06-16T21:00:00.000"), 35455, 1);
 
         // Then
-        Assertions.assertNotNull(price, "Price should be not null.");
-        Assertions.assertEquals(4, price.getPriceList(), "The value of price list should be 4.");
+        Assertions.assertNotNull(out, "Price should be not null.");
+        Assertions.assertEquals(4, out.get("price list"), "The value of price list should be 4.");
 
     }
 }
